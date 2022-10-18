@@ -15,7 +15,7 @@ workflows:
           adb wait-for-device
       - name: Build Android APK
         working_directory: android
-        script: chmod +x && ./gradlew assembleRelease
+        script: chmod +x && gradlew ./gradlew assembleRelease
     artifacts:
       - app/build/outputs/**/**/*.apk
     publishing:

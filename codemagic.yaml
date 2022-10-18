@@ -1,5 +1,6 @@
 workflows:
   my-workflow:
+    instance_type: linux
     cache:
       cache_paths:
         - $HOME/.gradle/caches

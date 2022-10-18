@@ -5,7 +5,7 @@ workflows:
         - $HOME/.gradle/caches
     scripts:
       - name: Run unit tests
-        script: ./gradlew test
+        script: chmod +x gradlew && ./gradlew test
         test_report: app/build/**/*.xml
       - name: Launch emulator
         script: |

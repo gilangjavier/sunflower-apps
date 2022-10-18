@@ -6,7 +6,6 @@ workflows:
     scripts:
       - name: Run unit tests
         script: chmod +x gradlew && ./gradlew test
-        test_report: app/build/**/*.xml
       - name: Launch emulator
         script: |
           set -e # exit on first failed command
@@ -15,7 +14,7 @@ workflows:
           adb wait-for-device
       - name: Build Android APK
         working_directory: android
-        script: ./gradlew assembleRelease
+        script: chmod +x && ./gradlew assembleRelease
     artifacts:
       - app/build/outputs/**/**/*.apk
     publishing:

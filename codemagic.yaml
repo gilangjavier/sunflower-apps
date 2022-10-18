@@ -7,7 +7,6 @@ workflows:
     scripts:
       - name: Run unit tests
         script: chmod +x gradlew && ./gradlew test
-        test_report: app/build/**/*.xml
       - name: Launch emulator
         script: |
           set -e # exit on first failed command

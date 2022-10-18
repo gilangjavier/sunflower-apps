@@ -1,0 +1,24 @@
+workflows:
+  my-workflow:
+    cache:
+      cache_paths:
+        - $HOME/.gradle/caches
+    scripts:
+      - name: Run unit tests
+        script: ./gradlew test
+        test_report: app/build/**/*.xml
+      - name: Launch emulator
+        script: |
+          set -e # exit on first failed command
+          cd $ANDROID_HOME/tools
+          emulator -avd emulator &
+          adb wait-for-device
+      - name: Build Android APK
+        working_directory: android
+        script: ./gradlew assembleRelease
+    artifacts:
+      - app/build/outputs/**/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - gillvision0@gmail.com

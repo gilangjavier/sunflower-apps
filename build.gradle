@@ -1,0 +1,56 @@
+apply plugin: 'idea'
+apply plugin: 'application'
+apply plugin: 'scala'
+
+allprojects {
+  repositories {
+    mavenCentral()
+    //required for spoon
+      maven {
+          url 'http://spoon.gforge.inria.fr/repositories/releases/'
+      }
+    maven { url 'https://jitpack.io' }
+    flatDir {
+      dirs 'libs'
+    }
+  }
+}
+
+mainClassName = "io.glassdoor.Main"
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.7'
+    compile 'org.codehaus.groovy:groovy:2.4.6'
+    compile 'com.typesafe.akka:akka-actor_2.11:2.4.4'
+    compile 'com.typesafe.scala-logging:scala-logging_2.11:3.4.0'
+    compile 'com.typesafe.slick:slick_2.11:3.1.1'
+    compile 'ch.qos.logback:logback-classic:1.1.7'
+    compile 'com.typesafe:config:1.3.0'
+    compile 'org.smali:baksmali:2.1.1'
+    compile 'org.jline:jline:3.3.0'
+    compile 'org.fusesource.jansi:jansi:1.14'
+    compile 'fr.inria.gforge.spoon:spoon-core:5.1.1'
+    compile 'com.github.fschrofner:jadx-jitpack:v0.6.1'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.10'
+}
+
+run{
+    standardInput = System.in
+    standardOutput = System.out
+}
+
+// sourceSets {
+//     main {
+//         scala {
+//             srcDirs = ['main/scala']
+//         }
+//     }
+//     test {
+//         scala {
+//             srcDirs = ['test/scala']
+//         }
+//     }
+// }

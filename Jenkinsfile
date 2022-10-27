@@ -6,8 +6,9 @@ pipeline{
         withEnv(['IMAGE_DOCKER="vcgamers/helloverse:latest"']){
           sh '''
           export IMAGE_DOCKER="vcgamers/helloverse:latest"
-          sed 's/^\(image: \).*$/\1'"$IMAGE_DOCKER"'/' hello.yaml
-          cat hello.yaml
+          at hello.yml | grep image
+          sed -i 's|image: .*|version: "${IMAGE-DOCKER}"|' hello.yml
+          cat app.yml 
           '''
         }
       }

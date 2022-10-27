@@ -1,2 +1,2 @@
-.env.IMAGE_NAME
+image: $IMAGE_DOCKER
 TAG=${TAG_NAME}

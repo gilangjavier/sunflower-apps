@@ -7,7 +7,7 @@ pipeline{
           sh '''
           export IMAGE_DOCKER="vcgamers/helloverse:latest"
           echo $IMAGE_DOCKER
-          envsubst < yaml.txt
+          envsubst < hello.yaml
           echo $(TAG_NAME)
           cat hello.yaml
           '''

@@ -7,6 +7,7 @@ pipeline{
           sh '''
           IMAGE_DOCKER="vcgamers/helloverse:latest"
           echo $IMAGE_DOCKER
+          cat hello.yaml
           '''
         }
       }

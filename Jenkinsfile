@@ -1,16 +1,16 @@
 pipeline{
   agent any
   stages{
+    environment {
+            DOCKER_IMAGE = "vcgamers/helloverse:latest"
+    }
     stage('hello') {
       steps {
-        withEnv(['IMAGE_DOCKER="vcgamers/helloverse:latest"']){
-          sh '''
-          export IMAGE_DOCKER="vcgamers/helloverse:latest"
-          cat hello.yaml | grep image
-          sed -i 's|image: .*|image: "$IMAGE_DOCKER"|' hello.yaml
-          cat hello.yaml
-          '''
-        }
+         sh '''
+         cat hello.yaml | grep image
+         sed -i 's|image: .*|image: ${DOCKER_IMAGE}|' hello.yaml
+         cat hello.yaml
+         '''
       }
     }
   }

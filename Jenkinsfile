@@ -1,14 +1,13 @@
 pipeline{
   agent any
+  environment {
+            DOCKER_IMAGE = "vcgamers/helloverse:latest"
+  }
   stages{
     stage('hello') {
-      environment {
-            DOCKER_IMAGE = "vcgamers/helloverse:latest"
-      }
       steps {
          sh '''
-         cat hello.yaml | grep image
-         sed -i 's|image: .*|image: ${DOCKER_IMAGE}|' hello.yaml
+         sed -i "s/image:\\"\\"/image:\\"$DOCKER_IMAGE\\"/g" hello.yaml'
          cat hello.yaml
          '''
       }

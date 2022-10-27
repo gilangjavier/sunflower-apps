@@ -8,7 +8,7 @@ pipeline{
           export IMAGE_DOCKER="vcgamers/helloverse:latest"
           cat hello.yaml | grep image
           sed -i 's|image: .*|version: "${IMAGE-DOCKER}"|' hello.yaml
-          cat app.yaml 
+          cat hello.yaml
           '''
         }
       }

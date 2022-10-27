@@ -1,10 +1,10 @@
 pipeline{
   agent any
   stages{
-    environment {
-            DOCKER_IMAGE = "vcgamers/helloverse:latest"
-    }
     stage('hello') {
+      environment {
+            DOCKER_IMAGE = "vcgamers/helloverse:latest"
+      }
       steps {
          sh '''
          cat hello.yaml | grep image

@@ -6,7 +6,7 @@ pipeline{
   stages{
     stage('hello') {
       steps {
-        sh 'sed -i "s/image: \"\"/image: \"$DOCKER_IMAGE\"/g" hello.yaml
+        sh 'sed -i "s/image: \"\"/image: \"$DOCKER_IMAGE\"/g" hello.yaml'
         sh 'cat hello.yaml
       }
     }

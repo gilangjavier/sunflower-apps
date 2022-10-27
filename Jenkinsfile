@@ -5,8 +5,10 @@ pipeline{
       steps {
         withEnv(['IMAGE_DOCKER=vcgamers/helloverse:latest']){
           sh '''
-          IMAGE_DOCKER="vcgamers/helloverse:latest"
+          export IMAGE_DOCKER="vcgamers/helloverse:latest"
           echo $IMAGE_DOCKER
+          envsubst < yaml.txt
+          echo $(TAG_NAME)
           cat hello.yaml
           '''
         }
